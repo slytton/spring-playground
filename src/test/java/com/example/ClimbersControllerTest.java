@@ -55,6 +55,5 @@ public class ClimbersControllerTest {
         this.mvc.perform(patch("/climbers/" + name + "/").accept(MediaType.TEXT_PLAIN))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Patching " + name));
-
     }
 }
