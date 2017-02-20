@@ -15,10 +15,20 @@ public class Climber {
     private Date startedClimbingOn;
     private Integer age;
     private Competition[] competitions;
+    private Integer id;
 
     public Climber() {}
 
     public Climber(String firstName, String lastName, Date startedClimbingOn, Integer age){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.startedClimbingOn = startedClimbingOn;
+        this.age = age;
+        this.competitions = new Competition[]{};
+    }
+
+    public Climber(Integer id, String firstName, String lastName, Date startedClimbingOn, Integer age){
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.startedClimbingOn = startedClimbingOn;
@@ -87,5 +97,13 @@ public class Climber {
         }
 
         return result;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

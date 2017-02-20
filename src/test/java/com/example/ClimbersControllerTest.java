@@ -16,9 +16,12 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.hamcrest.Matchers.is;
 
 /**
  * Created by gschool on 2/18/17.
@@ -32,10 +35,24 @@ public class ClimbersControllerTest {
 ///
     @Test
     public void TestGetClimbers() throws Exception {
-        String expectedResponse = "[{\"firstName\":\"Chris\",\"lastName\":\"Sharma\",\"startedClimbingOn\":\"11-03-96\",\"age\":35},{\"firstName\":\"Dave\",\"lastName\":\"Graham\",\"startedClimbingOn\":\"04-11-93\",\"age\":35},{\"firstName\":\"Tommy\",\"lastName\":\"Caldwell\",\"startedClimbingOn\":\"04-04-85\",\"age\":38}]";
         this.mvc.perform(get("/climbers").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(content().json(expectedResponse));
+                .andExpect(jsonPath("$.[0].competitions.length()", is(10)));
+    }
+
+    @Test
+    public void TestGetClimber() throws Exception {
+        this.mvc.perform(get("/climbers/1").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstName", is("Chris")))
+                .andExpect(jsonPath("$.lastName", is("Sharma")))
+                .andExpect(jsonPath("$.age", is(35)));
+
+        this.mvc.perform(get("/climbers/2").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstName", is("Dave")))
+                .andExpect(jsonPath("$.lastName", is("Graham")))
+                .andExpect(jsonPath("$.age", is(35)));
     }
 
     @Test

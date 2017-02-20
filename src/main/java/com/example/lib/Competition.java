@@ -6,9 +6,15 @@ package com.example.lib;
 public class Competition {
     private Integer id;
     private String name;
-    private String result;
+    private Integer result;
 
     public Competition() {}
+
+    public Competition(Integer id, String name, Integer result) {
+        this.id = id;
+        this.name = name;
+        this.result = result;
+    }
 
     public Integer getId() {
         return id;
@@ -26,11 +32,11 @@ public class Competition {
         this.name = name;
     }
 
-    public String getResult() {
+    public Integer getResult() {
         return result;
     }
 
-    public void setResult(String result) {
+    public void setResult(Integer result) {
         this.result = result;
     }
 
