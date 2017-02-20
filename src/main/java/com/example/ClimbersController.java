@@ -32,4 +32,10 @@ public class ClimbersController {
         return "Patching " + name;
     }
 
+    @PostMapping({"/", ""})
+    public String postClimber(@RequestBody Climber climber) {
+        System.out.println(climber.toString());
+        return climber.toString();
+    }
+
 }
