@@ -20,7 +20,7 @@ public class AlbumsController {
     }
 
     @PostMapping({"/", ""})
-    Album create(@RequestBody Album album) {
+    public Album create(@RequestBody Album album) {
         repository.save(album);
         return album;
     }
