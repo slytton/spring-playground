@@ -23,10 +23,10 @@ public class OrderController {
     }
 
 
-    // Getting a 415 error :(
-    // Not sure @RequestBody can be used like this...
+//     Getting a 415 error :(
+//     Not sure @RequestBody can be used like this...
 //    @PostMapping({"/sandwich", "/sandwich/"})
-//    public String postSandwichOrders(@RequestBody Map<String, String> body) {
+//    public String postSandwichOrders(@RequestBody Map body) {
 //
 //        return String.format("Thanks for your order of a %s and %s %s",
 //                body.get("bread"),
